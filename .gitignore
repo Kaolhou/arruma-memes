@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 .env
+migrations
+*.db
 
 # Editor directories and files
 .idea

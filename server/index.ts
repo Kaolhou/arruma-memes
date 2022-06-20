@@ -8,19 +8,19 @@ app.use('/static', express.static('memes'));
 
 //import and run all scripts from middleware folder 
 (async function(){
-    const files = find(path.resolve(process.cwd(),'middleware'));
+    const files = find(path.resolve(process.cwd(),'middleware'),'.ts');
 
     (await Promise.all(
         files.map(async(file)=>
-            (await import(file)).default)
-    )).forEach((i)=>{
+            (await import(file)).default)))
+    .forEach((i)=>{
         app.use(i)
     })
 })();
 
 //import and run all scripts from paths folder 
 (async function(){
-    const files = find(path.resolve(process.cwd(),'paths'));
+    const files = find(path.resolve(process.cwd(),'paths'),'.ts');
 
     (await Promise.all(
         files.map(async(file)=>
