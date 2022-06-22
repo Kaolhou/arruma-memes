@@ -25,9 +25,7 @@ export default router.use(async(req,res,next)=>{
         if(!(files.find((o)=>o==i.name))){
             console.log('\x1b[31m%s\x1b[0m',`${i.name} not found`)
             console.log(`${(await prisma.memes.deleteMany({
-                where: {
-                    name: i.name,
-                },
+                where: { name: i.name }
             })).count} rows affected (delete)`)
         }
     })

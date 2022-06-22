@@ -6,6 +6,6 @@ const prisma = new PrismaClient()
 export default router.get('/',(req,res)=>{
     res.send('oi')
 }).get('/delete',async(req,res)=>{
-    await prisma.memes.deleteMany()
+    console.log(`${(await prisma.memes.deleteMany()).count} rows affected (delete)`)
     res.send('deletou')
 })
